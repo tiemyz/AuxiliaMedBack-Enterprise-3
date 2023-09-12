@@ -81,7 +81,7 @@ Está API possui sistema de **Security e JWT** para a proteção de seus dados, 
 `GET` http://localhost:8080/api/v1/hospital
 ![Exemplo de GET](img/get-hospital.png)
 
-Para persistência de dados, foi utilizado o **"XAMPP"** (software de distribuição do Apache contendo PHP, MySQL e Perl) e o banco de dados **"phpMyAdmin"**. Uma vez que a API está sendo desenvolvida em uma única máquina de um dos integrantes do grupo com o usuário "root" e armazenando os dados, outros usuários em máquinas diferentes não conseguem ter o acesso aos dados (Hospitais, Consultórios e Doenças) do AuxiliaMed (mas conseguem fazer um CRUD para testar a api).
+Para persistência de dados, foi utilizado o **"XAMPP"** (software de distribuição do Apache contendo PHP, MySQL e Perl) e o banco de dados **"phpMyAdmin"**. Uma vez que a API está sendo desenvolvida em uma única máquina de um dos integrantes do grupo com o usuário "root" e armazenando os dados, outros usuários em máquinas diferentes não conseguem ter o acesso aos dados (Hospitais, Consultórios e Doenças) do AuxiliaMed (mas conseguem fazer um CRUD para testar a api). Se outro usuário quiser testar a api em sua máquina, primeiramente, é previamente necessário criar um banco de dados no phpMyAdmin com o nome "auxiliamedapi" antes de rodar a api.
 
 #### Tabelas no banco de dados (phpMyAdmin):
 ![Tabelas no banco de dados](img/tabelas-php.png)

@@ -7,7 +7,7 @@ App e plataforma web voltados ao auxílio de pessoas idosas, com o objetivo de f
 ##### RM95315 - Bruno Eduardo Caputo Paulino
 ##### RM95122 - Felipe da Silva Galvão
 ##### RM93960 - Isabella Piola Fernandes -> **2TDSR**
-##### RM95145 - Isabella Tiemy Hatamia Silva
+##### RM95145 - Isabella Tiemy Hatamiya Silva
 ##### RM94222 - Lethycia Moraes Maia
 
 ---

@@ -36,7 +36,12 @@ Com base em discussões e reuniões de ideias, encontramos um meio de solucionar
 ---
 ### Protótipo funcional da aplicação (Web)
 
-![Diagrama de blocos AuxiliaMed](img/am-prototipo-web.png)
+![Protótipo Web](img/Frame2.png)
+![Protótipo Web](img/Frame3.png)
+![Protótipo Web](img/Frame4.png)
+![Protótipo Web](img/Frame5.png)
+![Protótipo Web](img/Frame6.png)
+
 
 ---
 ### Procedimento para instalação e execução da API

@@ -25,80 +25,79 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.AuxiliaMedAPI.exception.RestNotFoundException;
-import br.com.fiap.AuxiliaMedAPI.models.Doenca;
-import br.com.fiap.AuxiliaMedAPI.repository.DoencaRepository;
+import br.com.fiap.AuxiliaMedAPI.models.Upa;
+import br.com.fiap.AuxiliaMedAPI.repository.UpaRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/v1/doenca")
+@RequestMapping("/api/v1/upa")
 @Slf4j
 @SecurityRequirement(name = "bearer-key")
-@Tag(name = "doenca")
-public class DoencaController {
-
+@Tag(name = "upa")
+public class UpaController {
+    
     @Autowired
-    DoencaRepository doencaRepository; 
+    UpaRepository upaRepository; 
 
     @Autowired
     PagedResourcesAssembler<Object> assembler;
 
     @GetMapping
     public PagedModel<EntityModel<Object>> index(@RequestParam(required = false) String busca, @ParameterObject @PageableDefault(size = 5) Pageable pageable) {
-        var doenca = (busca == null) ? 
-            doencaRepository.findAll(pageable): 
-            doencaRepository.findByIdContaining(busca, pageable);
+        var upa = (busca == null) ? 
+            upaRepository.findAll(pageable): 
+            upaRepository.findByIdContaining(busca, pageable);
 
-        return assembler.toModel(doenca.map(Doenca::toEntityModel)); 
+        return assembler.toModel(upa.map(Upa::toEntityModel)); 
     }
 
     @PostMapping
     @ApiResponses({
-        @ApiResponse(responseCode = "201", description = "a doenca foi cadastrada com sucesso"),
+        @ApiResponse(responseCode = "201", description = "a upa foi cadastrado com sucesso"),
         @ApiResponse(responseCode = "400", description = "os dados enviados são inválidos")
     })
-    public ResponseEntity<EntityModel<Doenca>> create(
-            @RequestBody @Valid Doenca doenca,
+    public ResponseEntity<EntityModel<Upa>> create(
+            @RequestBody @Valid Upa upa,
             BindingResult result) {
-        log.info("cadastrando informação: " + doenca);
-        doencaRepository.save(doenca);
+        log.info("cadastrando informação: " + upa);
+        upaRepository.save(upa);
         return ResponseEntity
-            .created(doenca.toEntityModel().getRequiredLink("self").toUri())
-            .body(doenca.toEntityModel());
+            .created(upa.toEntityModel().getRequiredLink("self").toUri())
+            .body(upa.toEntityModel());
     }
 
     @GetMapping("{id}")
     @Operation(
-        summary = "Detalhes da doenca",
-        description = "Retornar os dados da doenca de acordo com o id informado no path"
+        summary = "Detalhes da upa",
+        description = "Retornar os dados do upa de acordo com o id informado no path"
     )
-    public EntityModel<Doenca> show(@PathVariable Long id) {
+    public EntityModel<Upa> show(@PathVariable Long id) {
         log.info("buscando informação: " + id);
-        return getDoenca(id).toEntityModel();
+        return getUpa(id).toEntityModel();
     }
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Doenca> destroy(@PathVariable Long id){
+    public ResponseEntity<Upa> destroy(@PathVariable Long id){
         log.info("apagando informação: " + id);
-        doencaRepository.delete(getDoenca(id));
+        upaRepository.delete(getUpa(id));
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<EntityModel<Doenca>> update(
+    public ResponseEntity<EntityModel<Upa>> update(
             @PathVariable Long id,
-            @RequestBody @Valid Doenca doenca) {
+            @RequestBody @Valid Upa upa) {
         log.info("atualizando informação: " + id);
-        getDoenca(id);
-        doenca.setId(id);
-        doencaRepository.save(doenca);
-        return ResponseEntity.ok(doenca.toEntityModel());
+        getUpa(id);
+        upa.setId(id);
+        upaRepository.save(upa);
+        return ResponseEntity.ok(upa.toEntityModel());
     }
 
-    private Doenca getDoenca(Long id) {
-        return doencaRepository.findById(id)
+    private Upa getUpa(Long id) {
+        return upaRepository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("informação não encontrada"));
     }
-    
 }

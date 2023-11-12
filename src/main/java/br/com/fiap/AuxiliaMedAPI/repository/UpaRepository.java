@@ -4,8 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.fiap.AuxiliaMedAPI.models.Doenca;
+import br.com.fiap.AuxiliaMedAPI.models.Upa;
 
-public interface DoencaRepository extends JpaRepository<Doenca, Long> {
-    Page<Doenca> findByIdContaining(String busca, Pageable pageable);
+public interface UpaRepository extends JpaRepository<Upa, Long> {
+    Page<Upa> findByIdContaining(String busca, Pageable pageable);
 }
